@@ -14,3 +14,21 @@ char pop() {
    else { return stack[top--]; 
    }
 }
+int pushr(int x) {
+   if (top == max - 1)return 0;
+   else { top++; r[top] = x; return 1; }
+}
+
+int popr() {
+   if (top == -1) return 0;
+   else {
+      return r[top--];
+   }
+}
+
+int ip(char z) {
+   if (z == '(') return 0;
+   if (z == '+' || z == '-') return 1;
+   if (z == '*' || z == '/') return 2;
+   return -1;
+}

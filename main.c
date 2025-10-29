@@ -56,3 +56,30 @@ int pre(char g) {
          }
    return 0;
 }
+
+int main() {
+   while (1) {
+      p = 0;top = -1;w = 0;
+      printf("Enter infix>> ");
+      while (1) {
+         scanf_s("%c", &c);
+         if(c=='$') return 0;
+         if (c == '\n') break;
+         if (c == ' ') {}
+         else if ('0' <= c && c <= '9') {
+            do {
+               postfix[p++] = c;
+               if (scanf_s("%c", &c) != 1) break;
+            } while (c >= '0' && c <= '9');
+               postfix[p++] =' ';
+               if (c == '\n')break;
+               else if (c == ' ') {}
+               else pre(c);
+         }
+         else pre(c);
+      }
+      while (top != -1) {
+         postfix[p++] = pop();
+         if (postfix[p]!=' ')postfix[p++] = ' ';
+      }
+      postfix[p] = '\0';

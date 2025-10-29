@@ -32,3 +32,27 @@ int ip(char z) {
    if (z == '*' || z == '/') return 2;
    return -1;
 }
+
+int pre(char g) {
+   if (g == '(') {
+      push(g); return 0;
+   }
+   if (g == ')') {
+      while (stack[top] != '(') {
+         postfix[p++] = pop();
+         postfix[p++] = ' ';
+      }
+      if ( stack[top] == '(') pop();
+      return 0;
+   }
+   
+   else if (top == -1 && top==0) push(g);
+         else {
+            while (top >= 0 && ip(stack[top]) >= ip(g)) {
+               postfix[p++] = pop();
+               postfix[p++] = ' ';
+            }
+            push(g);
+         }
+   return 0;
+}

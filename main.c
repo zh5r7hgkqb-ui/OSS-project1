@@ -83,3 +83,21 @@ int main() {
          if (postfix[p]!=' ')postfix[p++] = ' ';
       }
       postfix[p] = '\0';
+top = -1;
+      for (int i = 0; i < max; i++) r[i] = 0;
+      for (int i = 0;i < p;i++) {
+         if (postfix[i] == '\0')break;
+         if (postfix[i] >= '0' && postfix[i] <= '9') {
+            if (top == -1 || postfix[i - 1] == ' ') pushr(postfix[i] - '0');
+            else r[top] = r[top] * 10 + (postfix[i] - '0');
+         }
+         else if (postfix[i] == ' ') {}
+         else { int a=popr(), b=popr();
+            if (postfix[i] == '*') { pushr(b*a); }
+            else if (postfix[i] == '/') { pushr( b / a); }
+            else if (postfix[i] == '+') {pushr(b+a); }
+            else if (postfix[i] == '-') { pushr(b-a); }}
+      }
+      printf("result: %d\n", r[0]);
+   }
+}

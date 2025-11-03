@@ -12,5 +12,6 @@ int main(){
     }
 
     printf("끝\n");
+    printf("추가함");
     return 0;
 }

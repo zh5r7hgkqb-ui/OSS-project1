@@ -13,5 +13,6 @@ int main(){
 
     printf("끝\n");
     printf("추가함");
+    printf("테스트 브렌치에 추가했음");
     return 0;
 }
